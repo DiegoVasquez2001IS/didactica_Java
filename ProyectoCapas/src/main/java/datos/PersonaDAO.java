@@ -138,44 +138,46 @@ public class PersonaDAO {
         
         return rows;
     }
-      public int query(Persona persona){
+     //    public List<Persona> query(Persona persona) { // Si se utiliza un ArrayList
+    public Persona query(Persona persona) {    
         Connection conn = null;
         PreparedStatement stmt = null;
-        ResultSet rs = null;        
+        ResultSet rs = null;
+        List<Persona> personas = new ArrayList<Persona>();
         int rows = 0;
-        
+
         try {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_QUERY);
             stmt = conn.prepareStatement(SQL_QUERY);
             stmt.setInt(1, persona.getId_persona());
             rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 int id_persona = rs.getInt("id_persona");
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellido");
                 String email = rs.getString("email");
                 String telefono = rs.getString("telefono");
-                
+
                 persona = new Persona();
                 persona.setId_persona(id_persona);
                 persona.setNombre(nombre);
                 persona.setApellido(apellido);
                 persona.setEmail(email);
                 persona.setTelefono(telefono);
-                rows++;             
+                //personas.add(persona); // Si se utiliza un ArrayList
             }
-            System.out.println("Registros buscado:" + persona);
+            //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
-        }
-        finally{
+        } finally {
             Conexion.close(rs);
             Conexion.close(stmt);
             Conexion.close(conn);
         }
-        
-        return rows;
+
+        //return personas;  // Si se utiliza un ArrayList
+        return persona;
     }
     
 }

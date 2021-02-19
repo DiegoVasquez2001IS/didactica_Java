@@ -40,14 +40,29 @@ public class ManejoPersonas {
 //        // Prueba query
         Persona personaConsultar = new Persona();
         personaConsultar.setId_persona(1);
-        personaDAO.query(personaConsultar);
+        // Recuperación de información a través de otro objeto
+        personaConsultar=personaDAO.query(personaConsultar);
+        System.out.println("persona:" + personaConsultar.toString()); 
+        System.out.println("ID:" + personaConsultar.getId_persona()); 
+        System.out.println("nombre:" + personaConsultar.getNombre());
+        System.out.println("apellido:" + personaConsultar.getApellido());         
+        System.out.println("correo:" + personaConsultar.getEmail()); 
+        System.out.println("telefono:" + personaConsultar.getTelefono());         
+ 
+        // Recuperación de información a través de un Array_list
+        //List<Persona> personas = personaDAO.query(personaConsultar);
+        //System.out.println("persona:" + personas.toString()); 
+        //System.out.println("Nombre:" + personas.get(0).getNombre());        
+        //System.out.println("Email:" + personas.get(0).getEmail();        
+        
     
 //     Despliegue de registros
-        List<Persona> personas = personaDAO.select();
+        //List<Persona> personas = personaDAO.select();
 
-        for (Persona persona : personas) {
-            System.out.println("persona:" + persona);
-        }
+        //for (Persona persona : personas) {
+        //    System.out.println("persona:" + persona);        
+        //}
+        
     }
 
 }
