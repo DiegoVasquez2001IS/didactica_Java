@@ -56,8 +56,8 @@ public class PilasyColas {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        pila();
-        //cola();
+        //pila();
+        cola();
        System.out.println("    "+"Terminada la aplicacion");
     }
 
